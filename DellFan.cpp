@@ -119,7 +119,7 @@ void Hwmon_get()
         // }
     }
     if (dellsmm == ""){
-        std::cout << "Cannot find Dell-smm-hwmon. Try 'modprobe dell-smm-hwmon restricted=0 ignore_dmi=1'. " << std::endl;
+        std::cout << "Cannot find Dell-smm-hwmon. Try 'modprobe dell-smm-hwmon restricted=0 ignore_dmi=1'. " << "\n";
         exit(EXIT_FAILURE);
     }
 };
@@ -227,8 +227,8 @@ uint8_t hex_to_EC(uint8_t hex){
 // Prints a status update.
 void print_status()
 {
-    std::cout << "Current fan speeds : " << cpu_fan << " RPM and " << gpu_fan << " RPM.      " << std::endl;
-    std::cout << "CPU and GPU temperatures : " << cpu_temp/1000 << "°C and " << gpu_temp/1000 << "°C.  " << std::endl;
+    std::cout << "Current fan speeds : " << cpu_fan << " RPM and " << gpu_fan << " RPM." << "\n";
+    std::cout << "CPU and GPU temperatures : " << cpu_temp/1000 << "°C and " << gpu_temp/1000 << "°C." << "\n";
     std::cout << "\033[2F";
     if (verbose) std::cout << "\033[1F";
 };
@@ -258,7 +258,7 @@ inline void fan_update(){
         set_gpu_fan(gpu_update);
     if (verbose)
     {
-        std::cout <<"CPU and GPU fans update : "<<  cpu_update <<" and "<< gpu_update << ".   "<<std::endl; 
+        std::cout <<"CPU and GPU fans update : "<<  cpu_update <<" and "<< gpu_update << "." << "\n"; 
     }
     
 }
@@ -328,7 +328,7 @@ inline void _set(int i, int argc, char* argv[]) {
 	else
 		right = std::stoi(argv[i+2]);
 	set_gpu_fan(hex_to_EC(right));
-	std::cout << "Set fans to "<< (int)(left) <<" and " << (int)(right) << ". Be careful, manual fan mode is on."<< std::endl;
+	std::cout << "Set fans to "<< (int)(left) <<" and " << (int)(right) << ". Be careful, manual fan mode is on."<< "\n";
 	exit(EXIT_SUCCESS);
 }
 inline void _boost(){
@@ -336,7 +336,7 @@ inline void _boost(){
 	manual_fan_mode(true);
 	set_gpu_fan(BOOST);
 	set_cpu_fan(BOOST);
-	printf("Boost speed. Be carefull, manual fan mode is on.");
+	printf("Boost speed. Be careful, manual fan mode is on.\n");
 	exit(EXIT_SUCCESS);
 }
 inline void _restore(){
